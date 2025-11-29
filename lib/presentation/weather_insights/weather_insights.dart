@@ -11,7 +11,7 @@ import './widgets/weather_actions_widget.dart';
 import './widgets/weekly_forecast_widget.dart';
 
 class WeatherInsights extends StatefulWidget {
-  const WeatherInsights({super.key});
+  const WeatherInsights({Key? key}) : super(key: key);
 
   @override
   State<WeatherInsights> createState() => _WeatherInsightsState();
@@ -20,7 +20,7 @@ class WeatherInsights extends StatefulWidget {
 class _WeatherInsightsState extends State<WeatherInsights>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  bool _isRefreshing = false;
+  
   String _currentLocation = "Pune, Maharashtra";
   String _lastUpdated = "2 minutes ago";
 
@@ -184,14 +184,14 @@ class _WeatherInsightsState extends State<WeatherInsights>
 
   Future<void> _refreshWeatherData() async {
     setState(() {
-      _isRefreshing = true;
+    
     });
 
     // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     setState(() {
-      _isRefreshing = false;
+      
       _lastUpdated = "Just now";
     });
 

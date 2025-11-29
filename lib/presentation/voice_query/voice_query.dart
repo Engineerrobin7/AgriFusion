@@ -19,7 +19,7 @@ class _VoiceQueryState extends State<VoiceQuery> with TickerProviderStateMixin {
   late Animation<Offset> _slideAnimation;
 
   String _currentQuery = '';
-  final String _currentResponse = '';
+  
   bool _showResponse = false;
   bool _showHistory = false;
 
