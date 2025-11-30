@@ -232,7 +232,7 @@ class SupportSectionWidget extends StatelessWidget {
             onChanged: (bool value) {
               // Handle privacy setting toggle
             },
-            activeColor: AppTheme.lightTheme.primaryColor,
+            activeThumbColor: AppTheme.lightTheme.primaryColor,
             activeTrackColor:
                 AppTheme.lightTheme.primaryColor.withValues(alpha: 0.5),
             inactiveThumbColor: AppTheme.textDisabledLight,

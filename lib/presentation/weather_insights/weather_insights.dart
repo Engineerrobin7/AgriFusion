@@ -11,7 +11,7 @@ import './widgets/weather_actions_widget.dart';
 import './widgets/weekly_forecast_widget.dart';
 
 class WeatherInsights extends StatefulWidget {
-  const WeatherInsights({Key? key}) : super(key: key);
+  const WeatherInsights({super.key});
 
   @override
   State<WeatherInsights> createState() => _WeatherInsightsState();

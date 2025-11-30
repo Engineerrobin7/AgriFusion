@@ -176,9 +176,9 @@ class _SplashScreenState extends State<SplashScreen>
         end: Alignment.bottomCenter,
         stops: const [0.0, 0.4, 0.8, 1.0],
         colors: [
-          const Color(0xFF4CAF50).withValues(alpha: 0.1), // Light green
-          const Color(0xFF2E7D32).withValues(alpha: 0.05), // Darker green
-          const Color(0xFFF57C00).withValues(alpha: 0.03), // Subtle amber
+          const Color(0xFF4CAF50).withOpacity(0.1), // Light green
+          const Color(0xFF2E7D32).withOpacity(0.05), // Darker green
+          const Color(0xFFF57C00).withOpacity(0.03), // Subtle amber
           Theme.of(context).scaffoldBackgroundColor,
         ],
       ),
@@ -209,7 +209,7 @@ class _SplashScreenState extends State<SplashScreen>
                         color: Theme.of(context)
                             .colorScheme
                             .primary
-                            .withValues(alpha: 0.2),
+                            .withOpacity(0.2),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),
@@ -250,7 +250,7 @@ class _SplashScreenState extends State<SplashScreen>
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface
-                        .withValues(alpha: 0.7),
+                        .withOpacity(0.7),
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -298,7 +298,7 @@ class _SplashScreenState extends State<SplashScreen>
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface
-                        .withValues(alpha: 0.6),
+                        .withOpacity(0.6),
                     letterSpacing: 0.3,
                   ),
                   textAlign: TextAlign.center,
@@ -312,16 +312,13 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildVersionInfo() {
-    return Positioned(
-      bottom: 2.h,
-      child: Text(
-        'Version 1.0.0',
-        style: GoogleFonts.roboto(
-          fontSize: 10.sp,
-          fontWeight: FontWeight.w400,
-          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4),
-          letterSpacing: 0.5,
-        ),
+    return Text(
+      'Version 1.0.0',
+      style: GoogleFonts.roboto(
+        fontSize: 10.sp,
+        fontWeight: FontWeight.w400,
+        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
+        letterSpacing: 0.5,
       ),
     );
   }

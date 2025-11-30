@@ -160,7 +160,7 @@ class _NotificationPreferencesWidgetState
             onChanged: (bool value) {
               widget.onToggle(key, value);
             },
-            activeColor: AppTheme.lightTheme.primaryColor,
+            activeThumbColor: AppTheme.lightTheme.primaryColor,
             activeTrackColor:
                 AppTheme.lightTheme.primaryColor.withValues(alpha: 0.5),
             inactiveThumbColor: AppTheme.textDisabledLight,

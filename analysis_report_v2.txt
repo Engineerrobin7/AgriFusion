@@ -1,0 +1,5 @@
+Analyzing AgriFusion...                                         
+
+   info - The import of './theme/app_theme.dart' is unnecessary because all of the used elements are also provided by the import of 'core/app_export.dart' - lib\main.dart:4:8 - unnecessary_import
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\presentation\registration\widgets\agricultural_details_section_widget.dart:231:11 - deprecated_member_use
+

@@ -121,6 +121,7 @@ class _RegistrationState extends State<Registration> {
   }
 
   void _showErrorToast(String message) {
+    if (!mounted) return;
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
@@ -159,7 +160,9 @@ class _RegistrationState extends State<Registration> {
           'Account created successfully! Please verify your phone number.');
 
       // Navigate to appropriate screen (could be phone verification or onboarding)
-      Navigator.of(context).pushReplacementNamed(AppRoutes.languageSelection);
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed(AppRoutes.languageSelection);
+      }
     } catch (e) {
       _showErrorToast('Registration failed. Please try again.');
     } finally {
@@ -318,7 +321,7 @@ class _RegistrationState extends State<Registration> {
         color: Theme.of(context).scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.shadow,
+            color: Theme.of(context).shadowColor,
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),

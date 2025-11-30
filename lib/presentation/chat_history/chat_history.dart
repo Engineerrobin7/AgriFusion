@@ -237,7 +237,7 @@ class _ChatHistoryState extends State<ChatHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.lightTheme.scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: _buildAppBar(),
       body: Column(
         children: [
@@ -270,20 +270,20 @@ class _ChatHistoryState extends State<ChatHistory> {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: AppTheme.lightTheme.colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       elevation: 0,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
         icon: CustomIconWidget(
           iconName: 'arrow_back',
-          color: AppTheme.textPrimaryLight,
+          color: Theme.of(context).textTheme.bodyLarge!.color,
           size: 6.w,
         ),
       ),
       title: Text(
         'Chat History',
-        style: AppTheme.lightTheme.textTheme.titleLarge?.copyWith(
-          color: AppTheme.textPrimaryLight,
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          color: Theme.of(context).textTheme.bodyLarge!.color,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -292,7 +292,7 @@ class _ChatHistoryState extends State<ChatHistory> {
           onPressed: _showSortOptions,
           icon: CustomIconWidget(
             iconName: 'sort',
-            color: AppTheme.textPrimaryLight,
+            color: Theme.of(context).textTheme.bodyLarge!.color,
             size: 6.w,
           ),
         ),
@@ -300,7 +300,7 @@ class _ChatHistoryState extends State<ChatHistory> {
           onPressed: _showMoreOptions,
           icon: CustomIconWidget(
             iconName: 'more_vert',
-            color: AppTheme.textPrimaryLight,
+            color: Theme.of(context).textTheme.bodyLarge!.color,
             size: 6.w,
           ),
         ),
@@ -308,7 +308,7 @@ class _ChatHistoryState extends State<ChatHistory> {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1.0),
         child: Container(
-          color: AppTheme.lightTheme.dividerColor.withValues(alpha: 0.2),
+          color: Theme.of(context).dividerColor.withValues(alpha: 0.2),
           height: 1.0,
         ),
       ),
@@ -321,7 +321,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     if (_isLoading) {
       return Center(
         child: CircularProgressIndicator(
-          color: AppTheme.lightTheme.colorScheme.primary,
+          color: Theme.of(context).colorScheme.primary,
         ),
       );
     }
@@ -361,7 +361,7 @@ class _ChatHistoryState extends State<ChatHistory> {
 
     return RefreshIndicator(
       onRefresh: _refreshChatHistory,
-      color: AppTheme.lightTheme.colorScheme.primary,
+      color: Theme.of(context).colorScheme.primary,
       child: ListView.builder(
         physics: const AlwaysScrollableScrollPhysics(),
         itemCount: filteredChats.length,
@@ -383,17 +383,17 @@ class _ChatHistoryState extends State<ChatHistory> {
   Widget _buildFloatingActionButton() {
     return FloatingActionButton.extended(
       onPressed: () => Navigator.pushNamed(context, '/voice-query'),
-      backgroundColor: AppTheme.lightTheme.colorScheme.primary,
-      foregroundColor: AppTheme.lightTheme.colorScheme.onPrimary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      foregroundColor: Theme.of(context).colorScheme.onPrimary,
       icon: CustomIconWidget(
         iconName: 'mic',
-        color: AppTheme.lightTheme.colorScheme.onPrimary,
+        color: Theme.of(context).colorScheme.onPrimary,
         size: 6.w,
       ),
       label: Text(
         'Ask AI',
-        style: AppTheme.lightTheme.textTheme.titleSmall?.copyWith(
-          color: AppTheme.lightTheme.colorScheme.onPrimary,
+        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+          color: Theme.of(context).colorScheme.onPrimary,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -406,11 +406,11 @@ class _ChatHistoryState extends State<ChatHistory> {
       SnackBar(
         content: Text(
           'Voice search activated. Speak your query...',
-          style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-            color: AppTheme.lightTheme.colorScheme.onInverseSurface,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onInverseSurface,
           ),
         ),
-        backgroundColor: AppTheme.lightTheme.colorScheme.inverseSurface,
+        backgroundColor: Theme.of(context).colorScheme.inverseSurface,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -443,11 +443,11 @@ class _ChatHistoryState extends State<ChatHistory> {
       SnackBar(
         content: Text(
           isBookmarked ? 'Conversation bookmarked' : 'Bookmark removed',
-          style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-            color: AppTheme.lightTheme.colorScheme.onInverseSurface,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onInverseSurface,
           ),
         ),
-        backgroundColor: AppTheme.lightTheme.colorScheme.inverseSurface,
+        backgroundColor: Theme.of(context).colorScheme.inverseSurface,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -460,11 +460,11 @@ class _ChatHistoryState extends State<ChatHistory> {
       SnackBar(
         content: Text(
           'Sharing: ${chat['title']}',
-          style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-            color: AppTheme.lightTheme.colorScheme.onInverseSurface,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onInverseSurface,
           ),
         ),
-        backgroundColor: AppTheme.lightTheme.colorScheme.inverseSurface,
+        backgroundColor: Theme.of(context).colorScheme.inverseSurface,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -480,16 +480,16 @@ class _ChatHistoryState extends State<ChatHistory> {
       SnackBar(
         content: Text(
           'Conversation deleted',
-          style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-            color: AppTheme.lightTheme.colorScheme.onInverseSurface,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onInverseSurface,
           ),
         ),
-        backgroundColor: AppTheme.lightTheme.colorScheme.inverseSurface,
+        backgroundColor: Theme.of(context).colorScheme.inverseSurface,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         action: SnackBarAction(
           label: 'Undo',
-          textColor: AppTheme.lightTheme.colorScheme.primary,
+          textColor: Theme.of(context).colorScheme.primary,
           onPressed: () {
             // Undo functionality would restore the deleted conversation
           },
@@ -518,7 +518,7 @@ class _ChatHistoryState extends State<ChatHistory> {
   void _showSortOptions() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppTheme.lightTheme.colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -532,14 +532,14 @@ class _ChatHistoryState extends State<ChatHistory> {
                 width: 12.w,
                 height: 0.5.h,
                 decoration: BoxDecoration(
-                  color: AppTheme.lightTheme.dividerColor,
+                  color: Theme.of(context).dividerColor,
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
               SizedBox(height: 2.h),
               Text(
                 'Sort Conversations',
-                style: AppTheme.lightTheme.textTheme.titleMedium,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               SizedBox(height: 2.h),
               _buildSortOption('Most Recent', 'access_time'),
@@ -558,12 +558,12 @@ class _ChatHistoryState extends State<ChatHistory> {
     return ListTile(
       leading: CustomIconWidget(
         iconName: iconName,
-        color: AppTheme.textPrimaryLight,
+        color: Theme.of(context).textTheme.bodyLarge!.color,
         size: 6.w,
       ),
       title: Text(
         title,
-        style: AppTheme.lightTheme.textTheme.bodyMedium,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       onTap: () {
         Navigator.pop(context);
@@ -575,7 +575,7 @@ class _ChatHistoryState extends State<ChatHistory> {
   void _showMoreOptions() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppTheme.lightTheme.colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -589,7 +589,7 @@ class _ChatHistoryState extends State<ChatHistory> {
                 width: 12.w,
                 height: 0.5.h,
                 decoration: BoxDecoration(
-                  color: AppTheme.lightTheme.dividerColor,
+                  color: Theme.of(context).dividerColor,
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -610,12 +610,12 @@ class _ChatHistoryState extends State<ChatHistory> {
     return ListTile(
       leading: CustomIconWidget(
         iconName: iconName,
-        color: AppTheme.textPrimaryLight,
+        color: Theme.of(context).textTheme.bodyLarge!.color,
         size: 6.w,
       ),
       title: Text(
         title,
-        style: AppTheme.lightTheme.textTheme.bodyMedium,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       onTap: () {
         Navigator.pop(context);
@@ -636,15 +636,15 @@ class _ChatDetailScreen extends StatelessWidget {
     final List<dynamic> conversation = chatData['fullConversation'] ?? [];
 
     return Scaffold(
-      backgroundColor: AppTheme.lightTheme.scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: AppTheme.lightTheme.colorScheme.surface,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: CustomIconWidget(
             iconName: 'arrow_back',
-            color: AppTheme.textPrimaryLight,
+            color: Theme.of(context).textTheme.bodyLarge!.color,
             size: 6.w,
           ),
         ),
@@ -653,15 +653,15 @@ class _ChatDetailScreen extends StatelessWidget {
           children: [
             Text(
               chatData['title'] ?? '',
-              style: AppTheme.lightTheme.textTheme.titleMedium?.copyWith(
-                color: AppTheme.textPrimaryLight,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: Theme.of(context).textTheme.bodyLarge!.color,
                 fontWeight: FontWeight.w600,
               ),
             ),
             Text(
               chatData['timestamp'] ?? '',
-              style: AppTheme.lightTheme.textTheme.labelSmall?.copyWith(
-                color: AppTheme.textSecondaryLight,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: Theme.of(context).textTheme.bodySmall!.color,
               ),
             ),
           ],
@@ -673,7 +673,7 @@ class _ChatDetailScreen extends StatelessWidget {
             },
             icon: CustomIconWidget(
               iconName: 'share',
-              color: AppTheme.textPrimaryLight,
+              color: Theme.of(context).textTheme.bodyLarge!.color,
               size: 6.w,
             ),
           ),
@@ -698,12 +698,12 @@ class _ChatDetailScreen extends StatelessWidget {
                     width: 10.w,
                     height: 10.w,
                     decoration: BoxDecoration(
-                      color: AppTheme.lightTheme.colorScheme.primary,
+                      color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: CustomIconWidget(
                       iconName: 'smart_toy',
-                      color: AppTheme.lightTheme.colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       size: 6.w,
                     ),
                   ),
@@ -714,12 +714,12 @@ class _ChatDetailScreen extends StatelessWidget {
                     padding: EdgeInsets.all(3.w),
                     decoration: BoxDecoration(
                       color: isUser
-                          ? AppTheme.lightTheme.colorScheme.primary
-                          : AppTheme.lightTheme.colorScheme.surface,
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(12),
                       border: !isUser
                           ? Border.all(
-                              color: AppTheme.lightTheme.dividerColor
+                              color: Theme.of(context).dividerColor
                                   .withValues(alpha: 0.3),
                             )
                           : null,
@@ -745,11 +745,11 @@ class _ChatDetailScreen extends StatelessWidget {
                           ),
                         Text(
                           message['message'] ?? '',
-                          style: AppTheme.lightTheme.textTheme.bodyMedium
+                          style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                             color: isUser
-                                ? AppTheme.lightTheme.colorScheme.onPrimary
-                                : AppTheme.textPrimaryLight,
+                                ? Theme.of(context).colorScheme.onPrimary
+                                : Theme.of(context).textTheme.bodyLarge!.color,
                           ),
                         ),
                         if (message['hasVoice'] == true)
@@ -763,7 +763,7 @@ class _ChatDetailScreen extends StatelessWidget {
                                       ? AppTheme
                                           .lightTheme.colorScheme.onPrimary
                                           .withValues(alpha: 0.7)
-                                      : AppTheme.textSecondaryLight,
+                                      : Theme.of(context).textTheme.bodySmall!.color,
                                   size: 4.w,
                                 ),
                                 SizedBox(width: 1.w),
@@ -776,7 +776,7 @@ class _ChatDetailScreen extends StatelessWidget {
                                         ? AppTheme
                                             .lightTheme.colorScheme.onPrimary
                                             .withValues(alpha: 0.7)
-                                        : AppTheme.textSecondaryLight,
+                                        : Theme.of(context).textTheme.bodySmall!.color,
                                   ),
                                 ),
                               ],
@@ -792,7 +792,7 @@ class _ChatDetailScreen extends StatelessWidget {
                     width: 10.w,
                     height: 10.w,
                     decoration: BoxDecoration(
-                      color: AppTheme.lightTheme.colorScheme.secondary,
+                      color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: CustomIconWidget(
@@ -810,10 +810,10 @@ class _ChatDetailScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(4.w),
         decoration: BoxDecoration(
-          color: AppTheme.lightTheme.colorScheme.surface,
+          color: Theme.of(context).colorScheme.surface,
           border: Border(
             top: BorderSide(
-              color: AppTheme.lightTheme.dividerColor.withValues(alpha: 0.3),
+              color: Theme.of(context).dividerColor.withValues(alpha: 0.3),
             ),
           ),
         ),
@@ -825,8 +825,8 @@ class _ChatDetailScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/voice-query');
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.lightTheme.colorScheme.primary,
-                  foregroundColor: AppTheme.lightTheme.colorScheme.onPrimary,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   padding: EdgeInsets.symmetric(vertical: 2.h),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -837,14 +837,14 @@ class _ChatDetailScreen extends StatelessWidget {
                   children: [
                     CustomIconWidget(
                       iconName: 'chat',
-                      color: AppTheme.lightTheme.colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       size: 5.w,
                     ),
                     SizedBox(width: 2.w),
                     Text(
                       'Continue Discussion',
-                      style: AppTheme.lightTheme.textTheme.titleSmall?.copyWith(
-                        color: AppTheme.lightTheme.colorScheme.onPrimary,
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

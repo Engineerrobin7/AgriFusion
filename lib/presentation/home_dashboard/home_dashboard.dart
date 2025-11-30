@@ -106,7 +106,7 @@ class _HomeDashboardState extends State<HomeDashboard>
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: RefreshIndicator(
         onRefresh: _onRefresh,
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
@@ -128,7 +128,7 @@ class _HomeDashboardState extends State<HomeDashboard>
                     padding:
                         EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
                     decoration: BoxDecoration(
-                      color: Colors.orange.withValues(alpha: 0.1),
+                      color: Colors.orange.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.orange, width: 1),
                     ),
@@ -167,7 +167,7 @@ class _HomeDashboardState extends State<HomeDashboard>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircularProgressIndicator(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                             SizedBox(height: 2.h),
                             Text(
@@ -230,7 +230,7 @@ class _HomeDashboardState extends State<HomeDashboard>
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           foregroundColor: Colors.white,
           elevation: 6,
         ),

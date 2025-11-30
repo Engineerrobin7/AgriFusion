@@ -10,12 +10,12 @@ class WeatherActionsWidget extends StatelessWidget {
   final VoidCallback onSettingsTap;
 
   const WeatherActionsWidget({
-    Key? key,
+    super.key,
     required this.onMapsTap,
     required this.onHistoryTap,
     required this.onShareTap,
     required this.onSettingsTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

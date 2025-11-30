@@ -228,7 +228,7 @@ class AgriculturalDetailsSectionWidget extends StatelessWidget {
         ),
         SizedBox(height: 1.h),
         DropdownButtonFormField<String>(
-          value: value,
+          initialValue: value,
           decoration: InputDecoration(
             prefixIcon: Icon(
               icon,

@@ -295,6 +295,6 @@ class ConversationHistoryWidget extends StatelessWidget {
   void _shareConversation(String query, String response) {
     // Mock share functionality
     // In real implementation, use share_plus package
-    print('Sharing conversation: $query - $response');
+    debugPrint('Sharing conversation: $query - $response');
   }
 }
